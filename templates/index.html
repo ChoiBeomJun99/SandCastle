@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="naver-site-verification" content="6b6c8f2c4b181f8a8b52e68e2ff82ec0a69ed694" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--     Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>SandCatle</title>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+
+        *{
+            margin :0;
+            padding : 0;
+            box-sizing: border-box;
+            font-family: 'Jua', sans-serif;
+
+        }
+
+        ul{
+            list-style : none;
+        }
+
+        .container{
+            width : 100%;
+            height : 120%;
+            margin : auto;
+            background: linear-gradient(to left,  white 0%, skyblue 15%, skyblue 85%,  white 100% );
+        }
+
+        .logo {
+            float: left;
+            width: 300px;
+            height: 70px;
+            line-height: 100px;
+            padding-left: 50px;
+            margin-top : 20px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color : cornsilk;
+            text-shadow: 0 2px 0 #222;
+        }
+
+        .logo a > h1 {
+            font-size: 60px;
+            display: inline;
+        }
+
+        .logo a > p {
+            font-size: 26px;
+            display: inline;
+        }
+
+        .topMenu li{
+            margin:auto;
+        }
+
+        .topMenu li a{
+            margin-top : 40px;
+            display: block;
+            float : left;
+            text-decoration: none;
+            font-size: 28px;
+            color: whitesmoke;
+            text-shadow: 0 2px 0 #222;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .nav-link:hover {
+            color : yellow;
+            opacity: 0.85;
+        }
+
+        .center {
+            clear: both;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Yeon Sung', cursive;
+            opacity: 0.9;
+            color : #ff8f8f;
+            text-shadow: 0 2px 0 #ff2727;
+        }
+
+        .center > h1 {
+            margin-top: 120px;
+            font-size: 130px;
+            margin-left: 70px;
+
+        }
+
+        .center p {
+            font-size: 70px;
+            margin-left: 700px;
+            margin-top: 10px;
+            font-family: 'Yeon Sung', cursive;
+        }
+
+        .plusInfo{
+            margin-top: 70px;
+            color : black;
+            font-size : 15px;
+            text-align: center;
+        }
+
+        .nav {
+            display: inline;
+        }
+
+        .nav-link{
+            display: block;
+            float : left;
+            text-decoration: none;
+            font-size: 28px;
+            color: whitesmoke;
+            text-shadow: 0 2px 0 #222;
+            margin-top : 30px;
+            padding-left : 50px;
+        }
+
+        .table{
+            text-align: center;
+            margin : auto;
+            font-size : 20px;
+            width : 95%;
+            color : #ffad7b;
+            text-shadow: 0 0.5px 0 #ff622e;
+        }
+
+        .info{
+            font-size : 17px;
+            color : #ffffa1;
+            opacity: 0.9;
+            text-shadow: 0 2px 0 #a6a600;
+        }
+
+        .date{
+            font-size: 17px;
+            color : #ffffa1;
+            opacity: 0.9;
+            text-shadow: 0 2px 0 #a6a600;
+        }
+
+        .goodsName {
+            font-size : 20px;
+            color : #ffffff;
+            opacity: 0.9;
+            text-shadow: 0 2px 0 #000000;
+            text-display: none;
+        }
+
+         .goodsName:hover {
+             opacity: 0.7;
+             text-decoration: none;
+        }
+
+        @media ( max-width: 1024px ) {
+
+            .center p {
+                font-size: 70px;
+                margin-left: 70px;
+                margin-top: 40px;
+                font-family: 'Yeon Sung', cursive;
+            }
+
+            .note {
+                display: none;
+            }
+        }
+
+        @media ( max-width: 450px ) {
+
+            .container {
+                width: 100%;
+                height: 120%;
+                margin: auto;
+                background: linear-gradient(to left, white 0%, skyblue 7%, skyblue 93%, white 100%);
+            }
+
+            .logo a > h1 {
+                font-size: 50px;
+                display: inline;
+            }
+
+            .logo a > p {
+                font-size: 20px;
+                display: inline;
+            }
+
+            .center h1 {
+                font-size: 60px;
+                margin-top: 30px;
+                margin-left : 40px;
+            }
+
+            .nav-link {
+                font-size : 20px;
+            }
+
+            .center p {
+                font-size: 30px;
+                margin-left: 190px;
+                margin-top: 40px;
+                font-family: 'Yeon Sung', cursive;
+            }
+
+            .note {
+                display: none;
+            }
+
+            .table {
+                margin-top: -200px;
+                font-size: 13px
+            }
+
+            .info {
+                font-size: 10px;
+            }
+
+            .date {
+                font-size: 10px;
+            }
+
+            .goodsName {
+                font-size: 13px;
+                text-shadow: 0 0.5px 0 #000000;
+            }
+
+            .plusInfo {
+                font-size: 10px;
+            }
+
+        }
+
+         @media ( max-width: 320px ) {
+             .center h1 {
+                 font-size: 40px;
+                 margin-top: 30px;
+                 margin-left: 40px;
+             }
+
+             .center p {
+                 font-size: 20px;
+                 margin-left: 190px;
+                 margin-top: 20px;
+                 font-family: 'Yeon Sung', cursive;
+             }
+
+             .table {
+                margin-top : -300px;
+                font-size : 13px
+            }
+
+             .info {
+                 font-size: 10px;
+
+             }
+
+             .date {
+                 font-size: 10px;
+             }
+
+             .goodsName {
+                 font-size: 13px;
+                 text-shadow: 0 0.5px 0 #000000;
+             }
+
+         }
+
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            raffle_listing();
+        });
+
+        function raffle_listing() {
+            // 주문목록 보기 API 연결
+            $.ajax({
+                type: "GET",
+                url: "/order",
+                data: {},
+                success: function (response) {
+                    let orders = response['all_raffles']
+                    for (let i = 0; orders.length; i++) {
+                        let url = orders[i]['url']
+                        let name = orders[i]['name']
+                        let date = orders[i]['date']
+                        let price = orders[i]['price']
+                        let note = orders[i]['note']
+
+                        let temp_html = `<tr>
+                                 <th scope="row" class ='goodsName'><a class='goodsName' href ="${url}">${name}</a></th>
+                                  <td class ='date'>${date}</td>
+                                  <td class ='info'>${price}</td>
+                                 <td class ='info note'>${note}</td>
+                                 </tr>`
+
+                        $('#raffle_list').append(temp_html)
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <header class ='lm'>
+        <div class ='logo'>
+            <a href="/">
+                <h1>모</h1><p>두의</p> <h1>래</h1><p>플</p> <h1>성</h1><p>지</p>
+            </a>
+        </div>
+
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link" href="/">래플 일정</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="/debateRoom">토론방 / 정보공유</a>
+        </nav>
+
+    </header>
+
+        <div class="center">
+            <h1>모두의 당첨을</h1>
+            <p> 기원합니다!! </p>
+        </div>
+
+        <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">상품 이름</th>
+		      <th scope="col">일자</th>
+		      <th scope="col">가격</th>
+		      <th class ='note' scope="col">비고</th>
+		    </tr>
+		  </thead>
+            <tbody id="raffle_list">
+            </tbody>
+		</table>
+
+
+        <footer class="plusInfo">
+            <p>이 페이지는 여러분의 래플 성공에 도움을 주고자 순수 제작한 페이지 입니다.
+                <em>Made by Beomjun</em>
+            </p>
+        </footer>
+
+</div>
+</body>
+</html>

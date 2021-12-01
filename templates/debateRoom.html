@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--     Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>SandCatle</title>
+
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+
+        *{
+            margin :0;
+            padding : 0;
+            box-sizing: border-box;
+            font-family: 'Jua', sans-serif;
+
+        }
+
+        ul{
+            list-style : none;
+        }
+
+        .container{
+            width : 100%;
+            height : 120%;
+            margin : auto;
+            padding-bottom: 200px;
+            background: linear-gradient(to left,  white 0%, skyblue 15%, skyblue 85%,  white 100% );
+        }
+
+        .logo {
+            float: left;
+            width: 300px;
+            height: 70px;
+            line-height: 100px;
+            padding-left: 50px;
+            margin-top : 20px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color : cornsilk;
+            text-shadow: 0 2px 0 #222;
+        }
+
+        .logo a > h1 {
+            font-size: 60px;
+            display: inline;
+        }
+
+        .logo a > p {
+            font-size: 26px;
+            display: inline;
+        }
+
+
+        .nav-link:hover {
+            color : yellow;
+            opacity: 0.85;
+        }
+
+        .nav {
+            display: inline;
+        }
+
+        .nav-link{
+            display: block;
+            float : left;
+            text-decoration: none;
+            font-size: 28px;
+            color: whitesmoke;
+            text-shadow: 0 2px 0 #222;
+            margin-top : 30px;
+            padding-left : 50px;
+        }
+
+        .write{
+            margin-top : 20px;
+            width : 80%;
+            margin-left : 10px;
+        }
+
+        .mb-3{
+            margin-top : 10px
+        }
+
+        .table{
+            width : 95%;
+            font-size : 20px;
+            margin : auto;
+        }
+
+        .comment{
+            font-size : 15px;
+        }
+
+
+        @media ( max-width: 450px ) {
+
+            .container {
+                width: 100%;
+                height: 120%;
+                margin: auto;
+                background: linear-gradient(to left, white 0%, skyblue 7%, skyblue 93%, white 100%);
+            }
+
+            .logo a > h1 {
+                font-size: 50px;
+                display: inline;
+            }
+
+            .logo a > p {
+                font-size: 20px;
+                display: inline;
+            }
+
+            .nav-link {
+                font-size: 20px;
+            }
+
+            .table{
+                font-size : 17px;
+                margin-top : 20px;
+            }
+
+            .form-label{
+                font-size : 15px;
+            }
+
+            .comment {
+                font-size: 12px;
+            }
+
+        }
+
+
+        @media ( max-width: 320px ) {
+             .center h1 {
+                 font-size: 40px;
+                 margin-top: 30px;
+                 margin-left: 40px;
+             }
+
+            .center p {
+                font-size: 20px;
+                margin-left: 190px;
+                margin-top: 20px;
+                font-family: 'Yeon Sung', cursive;
+            }
+
+            .nav-link {
+                font-size: 15px;
+                margin-left : -10px;
+            }
+
+            .table {
+                font-size: 13px
+            }
+
+            .write {
+                width : 90%
+            }
+
+            .comment {
+                font-size: 10px;
+            }
+
+
+         }
+
+        </style>
+        <script>
+            $(document).ready(function () {
+                order_listing();
+            });
+
+            function order_listing() {
+                // 주문목록 보기 API 연결
+                $.ajax({
+                    type: "GET",
+                    url: "/debateRoom2",
+                    data: {},
+                    success: function (response) {
+                        let debates = response['all_debates']
+                        for (let i = 0; debates.length; i++) {
+                            let name = debates[i]['name']
+                            let comment = debates[i]['comment']
+                            let password = debates[i]['password']
+
+                            let temp_html =
+                                `<tr>
+                                    <th class = "comment" scope="row">${name}</th>
+                                    <td class="comment">${comment}</td>
+                                    <td><button type="button" onclick="commentDelete('${name}', '${password}')" class="btn btn-dark">삭제</button></td>
+                                </tr>`
+
+                            $('#debate_list').append(temp_html)
+                        }
+                    }
+                })
+            }
+
+            function order() {
+
+                name = $('#name').val();
+                password = $('#password').val();
+                comment = $('#comment').val();
+
+                // 주문하기 API 연결
+                $.ajax({
+                    type: "POST",
+                    url: "/debateRoom2",
+                    data: {name_give: name, password_give: password, comment_give : comment},
+                    success: function (response) { // 성공하면
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
+            }
+
+            function commentDelete(name, password) {
+
+                let pw = prompt('비밀번호를 입력해주세요.');
+                if (password == pw) {
+                    // 주문하기 API 연결
+                    $.ajax({
+                        type: "POST",
+                        url: "/debateRoom/delete",
+                        data: {name_give: name},
+                        success: function (response) { // 성공하면
+                            alert(response["msg"]);
+                            window.location.reload();
+                        }
+                    })
+                }else{
+                    alert('비밀번호가 일치하지 않습니다.')
+                }
+            }
+
+            $(document).ready(function () {
+                $(".comment").click(function () {
+                    $(".reply").toggle();
+                });
+            });
+        </script>
+</head>
+<body>
+    <div class="container">
+        <header class ='lm'>
+        <div class ='logo'>
+            <a href="/">
+                <h1>모</h1><p>두의</p> <h1>래</h1><p>플</p> <h1>성</h1><p>지</p>
+            </a>
+        </div>
+
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link" href="/">래플 일정</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="/debateRoom">토론방 / 정보공유</a>
+        </nav>
+
+    </header>
+
+
+        <table class="table debate">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">comment</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="debate_list">
+            <tr>
+                <th class="comment" scope="row">최범준</th>
+                <td class="comment">실험대상</td>
+                <td>
+                    <button type="button" onclick="commentDelete('${name}', '${password}')" class="btn btn-dark">삭제
+                    </button>
+                </td>
+                </tr>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="write">
+            <div class="row g-3">
+                <div class="col">
+                    <input type="text" class="form-control name" id="name" placeholder="이름">
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호 (삭제시 사용)">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="comment" class="form-label">내용</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+
+            <button type="button" onclick="order()" class="btn btn-primary">글쓰기</button>
+        </div>
+    </div>
+</body>
+</html>
